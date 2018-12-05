@@ -110,7 +110,9 @@ abstract class Form_Field_ValueList extends Form_Field
         try {
             if ($this->model) {
                 $id = $this->model->id_field;
-                $title = $this->model->getElement($this->model->title_field);
+                $title = $this->model->getTitleField();
+                //No, this doesn't work with CRUD -> EDIT -> DropDown (Model : ...->hasOne("...");)
+                //$title = $this->model->getElement($this->model->title_field);
 
                 $this->value_list = array();
                 foreach ($this->model as $row) {

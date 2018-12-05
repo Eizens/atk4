@@ -435,14 +435,15 @@ class BaseException extends Exception
                 ($sh == $n ? 'danger' : 'info').'>'.htmlspecialchars(dirname($bt['file'])).'/'.
                 '<b>'.htmlspecialchars(basename($bt['file'])).'</b>';
             $output .= ":{$bt['line']}</font>&nbsp;</td>";
-            $name = (!isset($bt['object']->name)) ? get_class($bt['object']) : $bt['object']->name;
+            $name = isset($bt['object']->name) ? $bt['object']->name : ($bt['object'] ? get_class($bt['object']) : '');
             if ($name) {
                 $output .= '<td>'.$name.'</td>';
             } else {
                 $output .= '<td></td>';
             }
+            $cl = $bt["object"] ? get_class($bt['object']) : "";
             $output .= '<td valign=top class=atk-effect-'.($sh == $n ? 'danger' : 'success').'>'.
-                get_class($bt['object'])."{$bt['type']}<b>{$bt['function']}</b>($args)</td>";
+                $cl ."{$bt['type']}<b>{$bt['function']}</b>($args)</td>";
 
             if ($doc) {
                 $output .= "<td><a href='".$doc."' target='_blank'><i class='icon-book'></i></a></td>";

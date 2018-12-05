@@ -792,7 +792,7 @@ class Grid_Advanced extends Grid_Basic
         $value = $this->current_row[$field.'_original'];
         $label = $this->current_row[$field];
 
-        if ($value === true || $value === 1 || $value === 'Y') {
+        if ($value === true || $value === 1 || $value == "1" || $value === 'Y') {
             $this->current_row_html[$field] =
                 '<div align=center>'.
                     '<i class="icon-check">'.($label!==$value ? $label : $this->app->_('yes')).'</i>'.
