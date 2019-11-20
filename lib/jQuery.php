@@ -219,7 +219,7 @@ class jQuery extends AbstractController
                     //$s = "if(console)console.log(".
                     //    "'Element','".$obj->name."','no action:','".str_replace("\n",'',addslashes($o))."')"
                     //if(strlen($o)>2) $this->addOnReady($s);
-                    continue;
+                    continue 2;
 
                 case 'always':
                     $r .= $o;
